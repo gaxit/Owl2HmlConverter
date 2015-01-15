@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<hml version="2.0">
+
+<types>
+
+	<type id="tpe_1" name="DataType" base="symbolic">
+		<domain>
+			<value is="RotationData" num="1"/>
+			<value is="TemperatureData" num="2"/>
+		</domain>
+	</type>
+
+	<type id="tpe_2" name="Inference" base="symbolic" >
+		<domain>
+			<value is="HotInference" num="1"/>
+			<value is="RestingInference" num="2"/>
+		</domain>
+	</type>
+
+	<type id="tpe_3" name="Sensor" base="symbolic">
+		<domain>
+			<value is="TemperatureSensor" num="1"/>
+			<value is="RotationSensor" num="2"/>
+		</domain>
+	</type>
+
+</types>
+
+<attributes>
+
+<attr id="att_1" type="tpe_1" name="DataType" class="simple" comm="io"/>
+
+<attr id="att_2" type="tpe_2" name="Inference" class="simple" comm="io"/>
+
+<attr id="att_3" type="tpe_3" name="Sensor" class="simple" comm="io"/>
+
+</attributes>
+
+<xtt>
+
+<table id="tab_1" name="Table1">
+
+			<desc>Associates dataTypes with Inferences</desc>
+
+			<schm>
+				<precondition>
+					<attref ref="att_2"/>
+				</precondition>
+				<conclusion>
+					<attref ref="att_1"/>
+				</conclusion>
+			</schm>
+
+			<rule id="rul_1">
+			<condition>
+				<relation name="eq">
+					<attref ref="att_2"/>
+					<set>
+						<value is="HotInference"/>
+					</set>
+				</relation>
+			</condition>
+			<decision>
+				<trans>
+					<attref ref="att_1"/>
+					<set>
+						<value is="TemperatureData"/>
+					</set>
+				</trans>
+			</decision>
+			</rule>
+			
+						<rule id="rul_1">
+			<condition>
+				<relation name="eq">
+					<attref ref="att_2"/>
+					<set>
+						<value is="RestingInference"/>
+					</set>
+				</relation>
+			</condition>
+			<decision>
+				<trans>
+					<attref ref="att_1"/>
+					<set>
+						<value is="RotationData"/>
+					</set>
+				</trans>
+			</decision>
+			</rule>
+
+		</table>
+		
+		<table id="tab_2" name="Table2">
+
+			<desc>Associates sensors with datatypes</desc>
+
+			<schm>
+				<precondition>
+					<attref ref="att_1"/>
+				</precondition>
+				<conclusion>
+					<attref ref="att_3"/>
+				</conclusion>
+			</schm>
+
+			<rule id="rul_1">
+			<condition>
+				<relation name="eq">
+					<attref ref="att_1"/>
+					<set>
+						<value is="TemperatureData"/>
+					</set>
+				</relation>
+			</condition>
+			<decision>
+				<trans>
+					<attref ref="att_3"/>
+					<set>
+						<value is="TemperatureSensor"/>
+					</set>
+				</trans>
+			</decision>
+			</rule>
+			
+						<rule id="rul_2">
+			<condition>
+				<relation name="eq">
+					<attref ref="att_1"/>
+					<set>
+						<value is="RotationData"/>
+					</set>
+				</relation>
+			</condition>
+			<decision>
+				<trans>
+					<attref ref="att_3"/>
+					<set>
+						<value is="RotationSensor"/>
+					</set>
+				</trans>
+			</decision>
+			</rule>
+
+		</table>
+
+</xtt>
+
+</hml>
