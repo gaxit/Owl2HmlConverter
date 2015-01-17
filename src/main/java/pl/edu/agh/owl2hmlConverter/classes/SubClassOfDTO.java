@@ -17,6 +17,15 @@ public class SubClassOfDTO {
 		subClassOfNodeList.add(node);
 	}
 	
+	public void addAll(List<Node> nodeList){
+		if (nodeList == null){
+			return;
+		}
+		for (Node node : nodeList) {
+			add(node);
+		}
+	}
+	
 	public List<Node> getSubClassOfNodeList(){
 		return subClassOfNodeList;
 	}
