@@ -12,13 +12,11 @@ import org.w3c.dom.Document;
 
 public class XmlFileWriter {
 	
-	private static final String PATH_TO_OWL_FILE = "converted.hml";
-	
-	public void writeXmlFile(Document document) throws TransformerException{
+	public void writeXmlFile(Document document, String pathToHmlFile) throws TransformerException{
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
 		DOMSource source = new DOMSource(document);
-		StreamResult result = new StreamResult(new File(PATH_TO_OWL_FILE));
+		StreamResult result = new StreamResult(new File(pathToHmlFile));
  
 		// Output to console for testing
 		// StreamResult result = new StreamResult(System.out);

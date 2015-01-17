@@ -12,10 +12,8 @@ import org.xml.sax.SAXException;
 
 public class XmlFileReader {
 	
-	private static final String PATH_TO_OWL_FILE = "src/main/resources/mikrotest2.owl";
-	
-	public Document readFile() throws ParserConfigurationException, SAXException, IOException{
-		File xmlFile = new File(PATH_TO_OWL_FILE);
+	public Document readFile(String pathToFile) throws ParserConfigurationException, SAXException, IOException{
+		File xmlFile = new File(pathToFile);
 		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
 		Document document = docBuilder.parse(xmlFile);
