@@ -7,7 +7,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import pl.edu.agh.owl2hmlConverter.classes.AbstractBaseDTO;
-import pl.edu.agh.owl2hmlConverter.classes.ConvertedClassDTO;
 
 public class Utils {
 
