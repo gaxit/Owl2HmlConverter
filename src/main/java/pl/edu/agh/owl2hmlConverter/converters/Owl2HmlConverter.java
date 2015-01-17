@@ -2,6 +2,8 @@ package pl.edu.agh.owl2hmlConverter.converters;
 
 import java.util.List;
 
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -10,11 +12,12 @@ import org.w3c.dom.NodeList;
 import pl.edu.agh.owl2hmlConverter.Constants;
 import pl.edu.agh.owl2hmlConverter.classes.ConvertedClassDTO;
 import pl.edu.agh.owl2hmlConverter.classes.SubClassOfDTO;
+import pl.edu.agh.owl2hmlConverter.utils.DocumentUtils;
 import pl.edu.agh.owl2hmlConverter.utils.Utils;
 
 public class Owl2HmlConverter {
 
-	public Document parseOwl2Hml(Document readDocument) {
+	public Document parseOwl2Hml(Document readDocument) throws ParserConfigurationException {
 		Element ontologyElement = readDocument.getDocumentElement();
 		SubClassOfDTO subClassOfDTO = prepareSubClassOfDTO(ontologyElement);
 		ConvertedClassDTO convertedClassDTO = Owl2ConvertedClassDTOConverter
@@ -22,9 +25,7 @@ public class Owl2HmlConverter {
 
 		Element hmlElement = ConvertedClassDTO2HmlConverter
 				.convert(convertedClassDTO);
-		Document hmlDocument = prepareHmlDocument(hmlElement);
-		// TODO po konwersji ustawić hmlDocument jako zwracany obiekt
-		return readDocument;
+		return prepareHmlDocument(hmlElement);
 	}
 
 	private SubClassOfDTO prepareSubClassOfDTO(Element ontologyElement) {
@@ -38,9 +39,10 @@ public class Owl2HmlConverter {
 		return subClassOfDTO;
 	}
 
-	private Document prepareHmlDocument(Element hmlElement) {
-		// TODO dodać przygotowanie dokumentu na podstawie głównego elementu
-		return null;
+	private Document prepareHmlDocument(Element hmlElement) throws ParserConfigurationException {
+		Document document = DocumentUtils.getDocument();
+		document.appendChild(hmlElement);
+		return document;
 	}
 
 }
