@@ -11,7 +11,7 @@ public class InferenceDTO extends AbstractBaseDTO {
 		dataTypeNames = new ArrayList<String>();
 	}
 	
-	public void addName(String dataTypeName){
+	public void addDataTypeName(String dataTypeName){
 		dataTypeNames.add(dataTypeName);
 	}
 	

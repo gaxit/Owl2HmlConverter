@@ -28,10 +28,55 @@ public class Owl2ConvertedClassDTOConverter {
 		}
 
 		addNodesToConvertedClassDTO(convertedClassDTO, doubleClassList);
+		addConnectionsBetweenDTOs(convertedClassDTO,
+				singleClassAndObjectSomeValuesFromList);
 
 		return convertedClassDTO;
 	}
-	
+
+	private static void addConnectionsBetweenDTOs(
+			ConvertedClassDTO convertedClassDTO,
+			List<Node> singleClassAndObjectSomeValuesFromList) {
+		for (Node node : singleClassAndObjectSomeValuesFromList) {
+			addConnectionsBetweenDTO(convertedClassDTO, node);
+		}
+
+	}
+
+	private static void addConnectionsBetweenDTO(
+			ConvertedClassDTO convertedClassDTO, Node node) {
+		Node mainClassNode = Utils.getNodeListWithSpecifiedNodeName(
+				node.getChildNodes(), Constants.OwlNodeNames.CLASS).get(0);
+		Node objectSomeValuesFromNode = Utils.getNodeListWithSpecifiedNodeName(
+				node.getChildNodes(),
+				Constants.OwlNodeNames.OBJECT_SOME_VALUE_FROM).get(0);
+		Node connectedNode = Utils.getNodeListWithSpecifiedNodeName(
+				objectSomeValuesFromNode.getChildNodes(),
+				Constants.OwlNodeNames.CLASS).get(0);
+
+		String mainClassNodeIriAttributeValue = getValueOfSpecificAttributeFromNode(
+				mainClassNode, Constants.AttributeNames.IRI);
+		String connectedNodeIriAttributeValue = getValueOfSpecificAttributeFromNode(
+				connectedNode, Constants.AttributeNames.IRI);
+
+		InferenceDTO inference = (InferenceDTO) Utils
+				.findDTOByNameInOneOfConvertedClassDTOLists(
+						convertedClassDTO.getInferenceList(),
+						mainClassNodeIriAttributeValue);
+		if (inference != null) {
+			inference.addDataTypeName(connectedNodeIriAttributeValue);
+			return;
+		}
+
+		DataTypeDTO dataType = (DataTypeDTO) Utils
+				.findDTOByNameInOneOfConvertedClassDTOLists(
+						convertedClassDTO.getDataTypeList(),
+						mainClassNodeIriAttributeValue);
+		if (dataType != null) {
+			dataType.addSensorName(connectedNodeIriAttributeValue);
+		}
+	}
+
 	private static void analyzeSubClassOfElementAndAddToLists(Node node,
 			List<Node> doubleClassList,
 			List<Node> singleClassAndObjectSomeValuesFromList) {
@@ -70,8 +115,9 @@ public class Owl2ConvertedClassDTOConverter {
 
 	private static void addSensorIfExists(ConvertedClassDTO convertedClassDTO,
 			List<Node> listNode) {
-		String sensorName = getNameOfBaseDTO(listNode, Constants.HmlNodeTypes.SENSOR);
-		if (sensorName != null){
+		String sensorName = getNameOfBaseDTO(listNode,
+				Constants.HmlNodeTypes.SENSOR);
+		if (sensorName != null) {
 			SensorDTO sensor = new SensorDTO();
 			sensor.setName(sensorName);
 			convertedClassDTO.addSensor(sensor);
@@ -80,8 +126,9 @@ public class Owl2ConvertedClassDTOConverter {
 
 	private static void addDataTypeIfExists(
 			ConvertedClassDTO convertedClassDTO, List<Node> listNode) {
-		String dataTypeName = getNameOfBaseDTO(listNode, Constants.HmlNodeTypes.DATA_TYPE);
-		if (dataTypeName != null){
+		String dataTypeName = getNameOfBaseDTO(listNode,
+				Constants.HmlNodeTypes.DATA_TYPE);
+		if (dataTypeName != null) {
 			DataTypeDTO dataType = new DataTypeDTO();
 			dataType.setName(dataTypeName);
 			convertedClassDTO.addDataType(dataType);
@@ -90,34 +137,38 @@ public class Owl2ConvertedClassDTOConverter {
 
 	private static void addInferenceIfExists(
 			ConvertedClassDTO convertedClassDTO, List<Node> listNode) {
-		String inferenceName = getNameOfBaseDTO(listNode, Constants.HmlNodeTypes.INFERENCE);
-		if (inferenceName != null){
+		String inferenceName = getNameOfBaseDTO(listNode,
+				Constants.HmlNodeTypes.INFERENCE);
+		if (inferenceName != null) {
 			InferenceDTO inference = new InferenceDTO();
 			inference.setName(inferenceName);
 			convertedClassDTO.addInference(inference);
 		}
 	}
-	
-	private static String getNameOfBaseDTO(List<Node> listNode, String hmlNodeType){
+
+	private static String getNameOfBaseDTO(List<Node> listNode,
+			String hmlNodeType) {
 		int indexOfMainNode = findNodeWithIRIAttribute(listNode, hmlNodeType);
-		if (indexOfMainNode != -1){
+		if (indexOfMainNode != -1) {
 			int entityIndex = 0;
-			if (indexOfMainNode == 0){
+			if (indexOfMainNode == 0) {
 				entityIndex = 1;
 			}
 			Node entityNode = listNode.get(entityIndex);
-			String attributeValue = getValueOfSpecificAttributeFromNode(entityNode, Constants.AttributeNames.IRI);
-			attributeValue = Utils.removeUnnecessaryCharsFromString(attributeValue);
-			return attributeValue;
+			return getValueOfSpecificAttributeFromNode(
+					entityNode, Constants.AttributeNames.IRI);
 		}
 		return null;
 	}
-	
-	private static String getValueOfSpecificAttributeFromNode(Node node, String attributeName){
-		for (int j=0; j<node.getAttributes().getLength(); j++){
+
+	private static String getValueOfSpecificAttributeFromNode(Node node,
+			String attributeName) {
+		for (int j = 0; j < node.getAttributes().getLength(); j++) {
 			Node attribute = node.getAttributes().item(j);
-			if (attributeName.equals(attribute.getNodeName())){
-				return attribute.getNodeValue();
+			if (attributeName.equals(attribute.getNodeName())) {
+				String attributeValue = attribute.getNodeValue();
+				attributeValue = Utils.removeUnnecessaryCharsFromString(attributeValue);
+				return attributeValue;
 			}
 		}
 		return null;
@@ -125,9 +176,9 @@ public class Owl2ConvertedClassDTOConverter {
 
 	private static int findNodeWithIRIAttribute(List<Node> listNode,
 			String nodeType) {
-		for (int i=0; i<listNode.size(); i++) {
+		for (int i = 0; i < listNode.size(); i++) {
 			Node node = listNode.get(i);
-			for (int j=0; j<node.getAttributes().getLength(); j++){
+			for (int j = 0; j < node.getAttributes().getLength(); j++) {
 				Node attribute = node.getAttributes().item(j);
 				if (nodeType.equals(attribute.getNodeValue())) {
 					return i;
