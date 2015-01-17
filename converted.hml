@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><Ontology xmlns="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" ontologyIRI="http://www.semanticweb.org/mieszko/ontologies/2015/0/untitled-ontology-8" xml:base="http://www.semanticweb.org/mieszko/ontologies/2015/0/untitled-ontology-8">
     <Prefix IRI="http://www.w3.org/2002/07/owl#" name=""/>
-    <Prefix IRI="http://www.w3.org/2002/07/owl#" name="owl"/>
     <Prefix IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" name="rdf"/>
     <Prefix IRI="http://www.w3.org/2001/XMLSchema#" name="xsd"/>
     <Prefix IRI="http://www.w3.org/2000/01/rdf-schema#" name="rdfs"/>
