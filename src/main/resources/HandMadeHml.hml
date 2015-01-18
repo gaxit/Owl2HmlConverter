@@ -52,25 +52,25 @@
 			</schm>
 
 			<rule id="rul_1">
-			<condition>
-				<relation name="eq">
-					<attref ref="att_2"/>
-					<set>
-						<value is="HotInference"/>
-					</set>
-				</relation>
-			</condition>
-			<decision>
-				<trans>
-					<attref ref="att_1"/>
-					<set>
-						<value is="TemperatureData"/>
-					</set>
-				</trans>
-			</decision>
+				<condition>
+					<relation name="eq">
+						<attref ref="att_2"/>
+						<set>
+							<value is="HotInference"/>
+						</set>
+					</relation>
+				</condition>
+				<decision>
+					<trans>
+						<attref ref="att_1"/>
+							<set>
+								<value is="TemperatureData"/>
+							</set>
+						</trans>
+				</decision>
 			</rule>
 			
-						<rule id="rul_1">
+					<rule id="rul_1">
 			<condition>
 				<relation name="eq">
 					<attref ref="att_2"/>

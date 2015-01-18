@@ -11,6 +11,8 @@ import org.w3c.dom.Node;
 import pl.edu.agh.owl2hmlConverter.Constants;
 import pl.edu.agh.owl2hmlConverter.classes.AbstractBaseDTO;
 import pl.edu.agh.owl2hmlConverter.classes.ConvertedClassDTO;
+import pl.edu.agh.owl2hmlConverter.classes.DataTypeDTO;
+import pl.edu.agh.owl2hmlConverter.classes.InferenceDTO;
 import pl.edu.agh.owl2hmlConverter.utils.DocumentUtils;
 
 public class ConvertedClassDTO2HmlConverter {
@@ -23,9 +25,9 @@ public class ConvertedClassDTO2HmlConverter {
 		Element rootElement = document
 				.createElement(Constants.HmlNodeNames.HML);
 
-		// rootElement.appendChild(prepareTypesElement(convertedClassDTO));
-		// rootElement.appendChild(prepareAttributesElement());
-		rootElement.appendChild(prepareXttElement());
+		rootElement.appendChild(prepareTypesElement(convertedClassDTO));
+		rootElement.appendChild(prepareAttributesElement());
+		rootElement.appendChild(prepareXttElement(convertedClassDTO));
 
 		return rootElement;
 	}
@@ -129,11 +131,185 @@ public class ConvertedClassDTO2HmlConverter {
 		return attributeElement;
 	}
 
-	private static Element prepareXttElement() {
-		Element typesElement = document
-				.createElement(Constants.HmlNodeNames.XTT);
+	private static Element prepareXttElement(ConvertedClassDTO convertedClassDTO) {
+		Element xttElement = document.createElement(Constants.HmlNodeNames.XTT);
 
-		return typesElement;
+		int suffix = 1;
+		xttElement.appendChild(prepareTableElement(suffix,
+				Constants.DtoSuffix.INFERENCE_INDEX,
+				Constants.DtoSuffix.DATA_TYPE_INDEX,
+				convertedClassDTO.getInferenceList()));
+		suffix++;
+		xttElement.appendChild(prepareTableElement(suffix,
+				Constants.DtoSuffix.DATA_TYPE_INDEX,
+				Constants.DtoSuffix.SENSOR_INDEX,
+				convertedClassDTO.getDataTypeList()));
+
+		return xttElement;
+	}
+
+	private static Element prepareTableElement(int tableSuffix,
+			int preconditionSuffix, int conclusionSuffix,
+			List<? extends AbstractBaseDTO> baseDtoList) {
+		Element tableElement = document
+				.createElement(Constants.HmlNodeNames.TABLE);
+
+		tableElement.setAttribute(Constants.HmlAttributeNames.ID,
+				Constants.Additional.TAB_ID_BASE + tableSuffix);
+		tableElement.setAttribute(Constants.HmlAttributeNames.NAME,
+				Constants.Additional.TAB_NAME_BASE + tableSuffix);
+
+		tableElement.appendChild(prepareSchemaElement(preconditionSuffix,
+				conclusionSuffix));
+
+		int ruleSuffix = 1;
+		if (preconditionSuffix == Constants.DtoSuffix.INFERENCE_INDEX) {
+			List<InferenceDTO> inferenceList = (List<InferenceDTO>) baseDtoList;
+			for (InferenceDTO inferenceDTO : inferenceList) {
+				for (String dataTypeName : inferenceDTO.getDataTypeNames()) {
+					tableElement.appendChild(prepareRuleElement(ruleSuffix,
+							inferenceDTO.getName(),
+							Constants.DtoSuffix.INFERENCE_INDEX,
+							Constants.DtoSuffix.DATA_TYPE_INDEX, dataTypeName));
+					ruleSuffix++;
+				}
+			}
+			return tableElement;
+		}
+
+		if (preconditionSuffix == Constants.DtoSuffix.DATA_TYPE_INDEX) {
+			List<DataTypeDTO> dataTypeList = (List<DataTypeDTO>) baseDtoList;
+			for (DataTypeDTO dataTypeDTO : dataTypeList) {
+				for (String sensorName : dataTypeDTO.getSensorNames()) {
+					tableElement.appendChild(prepareRuleElement(ruleSuffix,
+							dataTypeDTO.getName(),
+							Constants.DtoSuffix.DATA_TYPE_INDEX,
+							Constants.DtoSuffix.SENSOR_INDEX, sensorName));
+					ruleSuffix++;
+				}
+			}
+		}
+
+		return tableElement;
+	}
+
+	private static Node prepareRuleElement(int ruleSuffix,
+			String conditionalDtoName, int conditionSuffix, int decisionSuffix,
+			String decisionDtoName) {
+		Element ruleElement = document
+				.createElement(Constants.HmlNodeNames.RULE);
+
+		ruleElement.setAttribute(Constants.HmlAttributeNames.ID,
+				Constants.Additional.RULE_ID_BASE + ruleSuffix);
+		ruleElement.appendChild(prepareConditionElement(conditionSuffix,
+				conditionalDtoName));
+		ruleElement.appendChild(prepareDecisionElement(decisionSuffix,
+				decisionDtoName));
+
+		return ruleElement;
+	}
+
+	private static Element prepareDecisionElement(int decisionSuffix,
+			String dtoName) {
+		Element decisionElement = document
+				.createElement(Constants.HmlNodeNames.DECISION);
+
+		decisionElement
+				.appendChild(prepareTransElement(decisionSuffix, dtoName));
+
+		return decisionElement;
+	}
+
+	private static Element prepareTransElement(int decisionSuffix,
+			String dtoName) {
+		Element decisionElement = document
+				.createElement(Constants.HmlNodeNames.TRANS);
+
+		decisionElement.appendChild(prepareAttrefElement(decisionSuffix));
+		decisionElement.appendChild(prepareSetElement(dtoName));
+
+		return decisionElement;
+	}
+
+	private static Element prepareConditionElement(int conditionSuffix,
+			String conditionDtoName) {
+		Element conditionElement = document
+				.createElement(Constants.HmlNodeNames.CONDITION);
+
+		conditionElement.appendChild(prepareRelationElement(conditionSuffix,
+				conditionDtoName));
+
+		return conditionElement;
+	}
+
+	private static Element prepareRelationElement(int conditionSuffix,
+			String conditionDtoName) {
+		Element conditionElement = document
+				.createElement(Constants.HmlNodeNames.RELATION);
+
+		conditionElement.setAttribute(Constants.HmlAttributeNames.NAME,
+				Constants.Additional.EQ);
+		conditionElement.appendChild(prepareAttrefElement(conditionSuffix));
+		conditionElement.appendChild(prepareSetElement(conditionDtoName));
+
+		return conditionElement;
+	}
+
+	private static Element prepareSetElement(String dtoName) {
+		Element setElement = document.createElement(Constants.HmlNodeNames.SET);
+
+		setElement.appendChild(prepareValueElement(dtoName));
+
+		return setElement;
+	}
+
+	private static Node prepareValueElement(String dtoName) {
+		Element valueElement = document
+				.createElement(Constants.HmlNodeNames.VALUE);
+
+		valueElement.setAttribute(Constants.HmlAttributeNames.IS, dtoName);
+
+		return valueElement;
+	}
+
+	private static Element prepareSchemaElement(int preconditionSuffix,
+			int conclusionSuffix) {
+		Element schemaElement = document
+				.createElement(Constants.HmlNodeNames.SCHEMA);
+
+		schemaElement
+				.appendChild(preparePreconditionElement(preconditionSuffix));
+		schemaElement.appendChild(prepareConclusionElement(conclusionSuffix));
+
+		return schemaElement;
+	}
+
+	private static Element prepareConclusionElement(int suffix) {
+		Element conclusionElement = document
+				.createElement(Constants.HmlNodeNames.CONCLUSION);
+
+		conclusionElement.appendChild(prepareAttrefElement(suffix));
+
+		return conclusionElement;
+	}
+
+	private static Element prepareAttrefElement(int suffix) {
+		Element attrefElement = document
+				.createElement(Constants.HmlNodeNames.ATTREF);
+
+		attrefElement.setAttribute(Constants.HmlAttributeNames.REF,
+				Constants.Additional.ATT_BASE + suffix);
+
+		return attrefElement;
+	}
+
+	private static Element preparePreconditionElement(int suffix) {
+		Element preconditionElement = document
+				.createElement(Constants.HmlNodeNames.PRECONDITION);
+
+		preconditionElement.appendChild(prepareAttrefElement(suffix));
+
+		return preconditionElement;
 	}
 
 }
