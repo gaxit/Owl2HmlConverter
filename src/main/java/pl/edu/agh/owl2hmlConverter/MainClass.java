@@ -25,15 +25,14 @@ public class MainClass {
         Document owlDocument = null;
         Document hmlDocument = null;
         try {
-        	//TODO odkomentowac sysouty
         	owlDocument = xmlFileReader.readFile(PATH_TO_OWL_FILE);
-//        	System.out.println("Owl file read");
+        	System.out.println("Owl file read");
         	
         	hmlDocument = owl2HmlParser.parseOwl2Hml(owlDocument);
-//        	System.out.println("File converted");
+        	System.out.println("File converted");
         	
         	xmlFileWriter.writeXmlFile(hmlDocument, PATH_TO_HML_FILE);
-//        	System.out.println("Hml file written");
+        	System.out.println("Hml file written");
 		} catch (ParserConfigurationException e) {
 			printErrorMessage(e);
 		} catch (SAXException e) {
