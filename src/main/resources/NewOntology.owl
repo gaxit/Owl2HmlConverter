@@ -1,0 +1,799 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/mieszko/ontologies/2015/0/untitled-ontology-15"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.semanticweb.org/mieszko/ontologies/2015/0/untitled-ontology-15">
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Declaration>
+        <Class IRI="#AWAREDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AWARESensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AccelerationDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AccelerometerSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ApplicationsDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ApplicationsSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AtHomeInference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BarometerDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BarometerSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BatteryDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BatterySensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BluetoothDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BluetoothSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CommunicationDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CommunicationSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DoNotDisturbInference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ESMDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ESMSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExercisingInference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GravityDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GravitySensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GyroscopeDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GyroscopeSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InTransitInference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Inference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InsideInference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InstallationsDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InstallationsSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LightDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LightSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LinearAccelerationDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LinearAccelerometerSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LocationDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LocationsSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MQTTDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MQTTSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MagnetometerDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MagnetometerSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NetworkDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NetworkSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PlayingGamesInsteadOfWorkingInference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProcessorDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProcessorSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProximityDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProximitySensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RestingInference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RotationDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RotationSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ScreenDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ScreenSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TelephonyDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TelephonySensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TemperatureDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TemperatureSensor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#UsingInternetInference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WiFiDataType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WiFiSensor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#CanBeInferredFrom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#IsProvidedBy"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#AWAREDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AWAREDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#AWARESensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AWARESensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AccelerationDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AccelerationDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#AccelerometerSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AccelerometerSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ApplicationsDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ApplicationsDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#ApplicationsSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ApplicationsSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AtHomeInference"/>
+        <Class IRI="#Inference"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AtHomeInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#LocationsSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BarometerDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BarometerDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#BarometerSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BarometerSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BatteryDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BatteryDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#BatterySensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BatterySensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BluetoothDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BluetoothDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#BluetoothSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BluetoothSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CommunicationDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CommunicationDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#CommunicationSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CommunicationSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#Sensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DoNotDisturbInference"/>
+        <Class IRI="#Inference"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DoNotDisturbInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#TelephonySensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ESMDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ESMDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#ESMSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ESMSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExercisingInference"/>
+        <Class IRI="#Inference"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExercisingInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#AccelerometerSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExercisingInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#GravitySensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExercisingInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#GyroscopeSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExercisingInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#LinearAccelerometerSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExercisingInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#RotationSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GravityDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GravityDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#GravitySensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GravitySensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GyroscopeDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GyroscopeDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#GyroscopeSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GyroscopeSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InTransitInference"/>
+        <Class IRI="#Inference"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InTransitInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#AccelerometerSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InTransitInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#LinearAccelerometerSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InTransitInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#LocationsSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Inference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#DataType"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InsideInference"/>
+        <Class IRI="#Inference"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InsideInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#LightSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InsideInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#LocationsSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InstallationsDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InstallationsDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#InstallationsSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InstallationsSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LightDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LightDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#LightSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LightSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LinearAccelerationDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LinearAccelerationDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#LinearAccelerometerSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LinearAccelerometerSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LocationDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LocationDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#LocationsSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LocationsSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MQTTDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MQTTDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#MQTTSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MQTTSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MagnetometerDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MagnetometerDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#MagnetometerSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MagnetometerSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NetworkDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NetworkDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#NetworkSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NetworkSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlayingGamesInsteadOfWorkingInference"/>
+        <Class IRI="#Inference"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlayingGamesInsteadOfWorkingInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#ApplicationsSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlayingGamesInsteadOfWorkingInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#InstallationsSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PlayingGamesInsteadOfWorkingInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#ScreenSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessorDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessorDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#ProcessorSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProcessorSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProximityDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProximityDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#ProximitySensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ProximitySensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RestingInference"/>
+        <Class IRI="#Inference"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RestingInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#AccelerometerSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RestingInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#GravitySensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RestingInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#GyroscopeSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RestingInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#LightSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RestingInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#LinearAccelerometerSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RestingInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#RotationSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RotationDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RotationDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#RotationSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RotationSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ScreenDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ScreenDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#ScreenSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ScreenSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TelephonyDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TelephonyDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#TelephonySensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TelephonySensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TemperatureDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TemperatureDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#TemperatureSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TemperatureSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UsingInternetInference"/>
+        <Class IRI="#Inference"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UsingInternetInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#ApplicationsSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UsingInternetInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#BluetoothSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UsingInternetInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#CommunicationSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UsingInternetInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#ScreenSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UsingInternetInference"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#CanBeInferredFrom"/>
+            <Class IRI="#WiFiSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WiFiDataType"/>
+        <Class IRI="#DataType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WiFiDataType"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#IsProvidedBy"/>
+            <Class IRI="#WiFiSensor"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WiFiSensor"/>
+        <Class IRI="#Sensor"/>
+    </SubClassOf>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
