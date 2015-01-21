@@ -8,8 +8,18 @@ import org.w3c.dom.NodeList;
 
 import pl.edu.agh.owl2hmlConverter.classes.AbstractBaseDTO;
 
+/**
+ * Klasa narzędziowa
+ */
 public class Utils {
 
+	/**
+	 * Metoda pobierająca z listy obiektów Node obiekty o podanej nazwie tagu XML
+	 * 
+	 * @param nodeList Lista obiektów klasy Node
+	 * @param nodeName Nazwa tagu XML
+	 * @return Lista obiektów klasy Node o podanej nazwie
+	 */
 	public static List<Node> getNodeListWithSpecifiedNodeName(
 			NodeList nodeList, String nodeName) {
 		List<Node> retrievedNodeList = new ArrayList<Node>();
@@ -22,6 +32,12 @@ public class Utils {
 		return retrievedNodeList;
 	}
 
+	/**
+	 * Metoda usuwająca '"' oraz '#' z napisu
+	 * 
+	 * @param text Tekst, z którego należy usunąć zbędne znaki
+	 * @return Tekst z usuniętymi znakami
+	 */
 	public static String removeUnnecessaryCharsFromString(String text) {
 		String textWithoutUnnecessaryChars = text.replace("\"", "");
 		textWithoutUnnecessaryChars = textWithoutUnnecessaryChars.replace("#",
@@ -29,6 +45,13 @@ public class Utils {
 		return textWithoutUnnecessaryChars;
 	}
 
+	/**
+	 * Metoda znajdująca klasę DTO o podanej nazwie w podanej liście
+	 * 
+	 * @param dtoList Lista obiektów pośrednich
+	 * @param name Nazwa obiektu pośredniego
+	 * @return Obiekt pośredni
+	 */
 	public static AbstractBaseDTO findDTOByNameInOneOfConvertedClassDTOLists(
 			List<? extends AbstractBaseDTO> dtoList, String name) {
 		for (AbstractBaseDTO baseDTO : dtoList) {

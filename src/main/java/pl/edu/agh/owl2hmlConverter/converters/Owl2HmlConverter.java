@@ -15,9 +15,19 @@ import pl.edu.agh.owl2hmlConverter.classes.SubClassOfDTO;
 import pl.edu.agh.owl2hmlConverter.utils.DocumentUtils;
 import pl.edu.agh.owl2hmlConverter.utils.Utils;
 
+/**
+ * Konwerter z postaci OWL do postaci HML
+ */
 public class Owl2HmlConverter {
 
-	public Document parseOwl2Hml(Document readDocument) throws ParserConfigurationException {
+	/**
+	 * Metoda konwertująca dokument w postaci OWL na dokument w postaci HML
+	 * 
+	 * @param readDocument Dokument w postaci OWL
+	 * @return Dokument w postaci HML
+	 * @throws ParserConfigurationException
+	 */
+	public Document convertOwl2Hml(Document readDocument) throws ParserConfigurationException {
 		Element ontologyElement = readDocument.getDocumentElement();
 		SubClassOfDTO subClassOfDTO = prepareSubClassOfDTO(ontologyElement);
 		ConvertedClassDTO convertedClassDTO = Owl2ConvertedClassDTOConverter

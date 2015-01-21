@@ -17,7 +17,7 @@ public class MainClass {
 	private static final String PATH_TO_OWL_FILE = "src/main/resources/TestOntology.owl";
 	private static final String PATH_TO_HML_FILE = "ConvertedHml.hml";
 	
-    public static void main(String[] args){        
+    public static void main(String[] args){
         XmlFileReader xmlFileReader = new XmlFileReader();
         Owl2HmlConverter owl2HmlParser = new Owl2HmlConverter();
         XmlFileWriter xmlFileWriter = new XmlFileWriter();
@@ -28,7 +28,7 @@ public class MainClass {
         	owlDocument = xmlFileReader.readFile(PATH_TO_OWL_FILE);
         	System.out.println("Owl file read");
         	
-        	hmlDocument = owl2HmlParser.parseOwl2Hml(owlDocument);
+        	hmlDocument = owl2HmlParser.convertOwl2Hml(owlDocument);
         	System.out.println("File converted");
         	
         	xmlFileWriter.writeXmlFile(hmlDocument, PATH_TO_HML_FILE);

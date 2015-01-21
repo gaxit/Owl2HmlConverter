@@ -10,6 +10,9 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 
+/**
+ * Klasa odpowiedzialna za zapis wynikowego pliku XML w postaci HML
+ */
 public class XmlFileWriter {
 	
 	public void writeXmlFile(Document document, String pathToHmlFile) throws TransformerException{
@@ -17,9 +20,6 @@ public class XmlFileWriter {
 		Transformer transformer = transformerFactory.newTransformer();
 		DOMSource source = new DOMSource(document);
 		StreamResult result = new StreamResult(new File(pathToHmlFile));
- 
-		// Output to console for testing
-		// StreamResult result = new StreamResult(System.out);
 		
 		transformer.transform(source, result);
 	}

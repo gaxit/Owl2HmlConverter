@@ -1,8 +1,14 @@
 package pl.edu.agh.owl2hmlConverter;
 
+/**
+ * Klasa zawierająca interfejsy definiujące stałe
+ */
 public class Constants {
-	
-	public interface OwlNodeNames{
+
+	/**
+	 * Interfejs zawierający nazwy tagów OWL
+	 */
+	public interface OwlNodeNames {
 		public static final String EMPTY_NODE = "#text";
 		public static final String SUBCLASS_OF = "SubClassOf";
 		public static final String DECLARATION = "Declaration";
@@ -10,18 +16,27 @@ public class Constants {
 		public static final String CLASS = "Class";
 		public static final String OBJECT_SOME_VALUE_FROM = "ObjectSomeValuesFrom";
 	}
-	
-	public interface HmlNodeTypes{
+
+	/**
+	 * Interfejs zawierający nazwy typów obiektów pośrednich w OWL
+	 */
+	public interface HmlNodeTypes {
 		public static final String DATA_TYPE = "#DataType";
 		public static final String SENSOR = "#Sensor";
 		public static final String INFERENCE = "#Inference";
 	}
-	
-	public interface AttributeNames{
+
+	/**
+	 * Interfejs zawierający nazwy atrybutów OWL
+	 */
+	public interface AttributeNames {
 		public static final String IRI = "IRI";
 	}
-	
-	public interface HmlNodeNames{
+
+	/**
+	 * Interfejs zawierający nazwy tagów HML
+	 */
+	public interface HmlNodeNames {
 		public static final String HML = "hml";
 		public static final String TYPES = "types";
 		public static final String ATTRIBUTES = "attributes";
@@ -42,8 +57,11 @@ public class Constants {
 		public static final String DECISION = "decision";
 		public static final String TRANS = "trans";
 	}
-	
-	public interface HmlAttributeNames{
+
+	/**
+	 * Interfejs zawierający nazwy atrybutów HML
+	 */
+	public interface HmlAttributeNames {
 		public static final String ID = "id";
 		public static final String NAME = "name";
 		public static final String BASE = "base";
@@ -54,8 +72,11 @@ public class Constants {
 		public static final String COMM = "comm";
 		public static final String REF = "ref";
 	}
-	
-	public interface Additional{
+
+	/**
+	 * Interfejs zawierający dodatkowe nazwy - np. prefixy dla atrybutów HML
+	 */
+	public interface Additional {
 		public static final String TYPE_ID_BASE = "tpe_";
 		public static final String ATT_BASE = "att_";
 		public static final String SYMBOLIC = "symbolic";
@@ -66,14 +87,22 @@ public class Constants {
 		public static final String RULE_ID_BASE = "rul_";
 		public static final String EQ = "eq";
 	}
-	
-	public interface DtoSuffix{
+
+	/**
+	 * Interfejs zawierający sufixy liczbowe dla typów obiektów - inferencji,
+	 * typu danych oraz sensora
+	 */
+	public interface DtoSuffix {
 		public static final int INFERENCE_INDEX = 1;
 		public static final int DATA_TYPE_INDEX = 2;
 		public static final int SENSOR_INDEX = 3;
 	}
-	
-	public interface DtoNames{
+
+	/**
+	 * Interfejs zawierający nazwy typów obiektów - inferencji, typu danych oraz
+	 * sensora
+	 */
+	public interface DtoNames {
 		public static final String INFERENCE_NAME = "Inference";
 		public static final String DATA_TYPE_NAME = "DataType";
 		public static final String SENSOR_NAME = "Sensor";

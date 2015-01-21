@@ -14,8 +14,17 @@ import pl.edu.agh.owl2hmlConverter.classes.SensorDTO;
 import pl.edu.agh.owl2hmlConverter.classes.SubClassOfDTO;
 import pl.edu.agh.owl2hmlConverter.utils.Utils;
 
+/**
+ * Konwerter z postaci OWL do postaci przejściowej
+ */
 public class Owl2ConvertedClassDTOConverter {
 
+	/**
+	 * Metoda konwertująca z postaci OWL do postaci przejściowej
+	 * 
+	 * @param subClassOfDTO Obiekt zawierający listę obiektów Node o type SubClassOf
+	 * @return Główny obiekt klasy przejściowej
+	 */
 	public static ConvertedClassDTO convert(SubClassOfDTO subClassOfDTO) {
 		ConvertedClassDTO convertedClassDTO = new ConvertedClassDTO();
 		List<Node> doubleClassList = new ArrayList<Node>();

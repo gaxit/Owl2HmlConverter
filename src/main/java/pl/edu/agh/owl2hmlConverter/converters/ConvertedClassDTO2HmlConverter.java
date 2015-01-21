@@ -15,10 +15,21 @@ import pl.edu.agh.owl2hmlConverter.classes.DataTypeDTO;
 import pl.edu.agh.owl2hmlConverter.classes.InferenceDTO;
 import pl.edu.agh.owl2hmlConverter.utils.DocumentUtils;
 
+/**
+ * Konwerter z postaci pośredniej - ConvertedClassDTO - na postać HML
+ */
 public class ConvertedClassDTO2HmlConverter {
 
 	private static Document document;
 
+	/**
+	 * 
+	 * @param convertedClassDTO
+	 *            Obiekt zawierający w sobie wczytane z ontologii dane
+	 *            przekonwertowane do postaci przejściowej
+	 * @return Główny element - tag xml - w postaci hml
+	 * @throws ParserConfigurationException
+	 */
 	public static Element convert(ConvertedClassDTO convertedClassDTO)
 			throws ParserConfigurationException {
 		document = DocumentUtils.getDocument();
